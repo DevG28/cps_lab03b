@@ -1,4 +1,4 @@
-package pe.edu.tecsup.lab03.StudentService;
+package pe.edu.tecsup.lab03.services;
 
 import pe.edu.tecsup.lab03.entities.StudentEntity;
 import pe.edu.tecsup.lab03.repositories.StudentRepository;
@@ -9,19 +9,19 @@ public class StudentService {
 
     private final StudentRepository repo;
 
-    // Inyección de dependencia (pasamos el repositorio al constructor)
     public StudentService(StudentRepository repo) {
         this.repo = repo;
     }
 
-    // Registrar estudiante (con validación de negocio)
-    public StudentEntity register(StudentEntity s) {
-        // Lógica de negocio: no registrar si ya existe el ID
-        StudentEntity existing = repo.findById(s.getId());
-        if (existing != null) {
-            throw new IllegalArgumentException("Ya existe un estudiante con ID " + s.getId());
+    // Registrar estudiante (si no existe el ID)
+    public void register(StudentEntity s) {
+        if (s.getId() != null) {
+            StudentEntity existing = repo.findById(s.getId());
+            if (existing != null) {
+                throw new IllegalArgumentException("Ya existe un estudiante con ID " + s.getId());
+            }
         }
-        return repo.save(s);
+        repo.save(s);
     }
 
     // Obtener estudiante por ID

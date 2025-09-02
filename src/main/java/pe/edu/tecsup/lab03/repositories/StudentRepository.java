@@ -5,7 +5,7 @@ import pe.edu.tecsup.lab03.entity.StudentEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentRepository {
+public class gitStudentRepository {
 
     private List<StudentEntity> students;
 

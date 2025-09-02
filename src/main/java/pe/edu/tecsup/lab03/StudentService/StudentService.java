@@ -1,4 +1,4 @@
-package StudentService;
+package pe.edu.tecsup.lab03.StudentService;
 
 import pe.edu.tecsup.lab03.entities.StudentEntity;
 import pe.edu.tecsup.lab03.repositories.StudentRepository;
